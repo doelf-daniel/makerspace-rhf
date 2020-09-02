@@ -1,0 +1,19 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+content {
+  display: block;
+}
+
+body {
+  max-width: 64em;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=normalize.css.map */

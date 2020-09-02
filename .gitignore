@@ -1,0 +1,23 @@
+# Django project
+
+# Python and others
+__pycache__
+*.pyc
+.DS_Store
+*.swp
+/venv/
+/.venv/
+/.env/
+/.idea/
+/staticfiles/
+.vscode
+coverage
+.python-version
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+

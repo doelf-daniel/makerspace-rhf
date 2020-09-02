@@ -1,0 +1,53 @@
+$color-primary: #ddd;
+$color-dark: #333;
+$color-shadow: 0 1px 5px rgba(104, 104, 104, 0.8);
+$background-color: yellow;
+
+.blog-title {
+	color: blue;
+}
+
+/* main Container */
+.main-container {
+	display: grid;
+	grid-template-colums: repeat(12, 1fr);
+	grid-gap: 2.0em;
+	grid-auto-rows: minmax(100px, auto);
+}
+
+
+.main {
+	grid-column: 1/10;
+	grid-row: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Top Box */
+.sidebar {
+	background-color: #cccccc;
+	grid-column: 10/13;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-shadow: $color-shadow;
+	padding: 1.0rem;
+
+	.item {
+		width: 100%;
+	}
+
+	.last-item {
+		width: 100%;
+		text-align: center;
+		padding-top: 2.0em;
+	}
+
+	h3 {
+		text-align: left !important;
+		font-size: 1.2em;
+		font-weight: 600;
+	}
+}
+
+

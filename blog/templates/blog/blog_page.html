@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags blogapp_tags wagtailroutablepage_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block extra_css %}
+
+    {% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    {% if search_term %}
+        <header class="page-header">
+            <h1 class="page-title">Search Results for <span>{{ search_type }}: {{ search_term }}</span></h1>
+        </header>
+    {% endif %}
+
+
+    <form role="search" method="get" class="form-search" action="{% routablepageurl blog_page "post_search" %}"
+          method="get">
+        <div class="input-group">
+            <input type="text" class="form-control search-query" name="q" placeholder="Search&hellip;"
+                   title="Search for:"/>
+            <span class="input-group-btn">
+          <button type="submit" class="btn" name="submit" id="searchsubmit" value="Search">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+        </div>
+    </form>
+
+
+    <h1>{{ page.title }}</h1>
+
+    <div class="intro">{{ page.description }}</div>
+
+    {% for post in page.get_children %}
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+    {% endfor %}
+
+
+
+{% endblock content %}

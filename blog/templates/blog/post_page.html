@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load wagtailroutablepage_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-post_page{% endblock %}
+
+{% block extra_css %}
+
+    {% comment %}
+Delete the line below if you're just getting started and want to remove the welcome screen!
+{% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+    <div class="main-container">
+
+        <div class="main">
+            <h1>{{ page.title }}</h1>
+            {{ page.body|richtext }}
+        </div>
+        <div class="sidebar">
+            <div class="item">
+                {% if page.tags.all.count %}
+                    <div class="">
+                        <h3>Tags</h3>
+                        {% for tag in page.tags.all %}
+                            <a href="{% routablepageurl blog_page "post_by_tag" tag.slug %}">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="item">
+                {% with categories=page.categories.all %}
+                    {% if categories %}
+                        <h3>Categories</h3>
+                        <ul>
+                            {% for category in categories %}
+                                <li style="display: inline">
+                                    <a href="{% routablepageurl blog_page "post_by_category" category.slug %}">{{ category.name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="last-item">
+                <a href="{{ page.get_parent.url }}" class="button1">Return to blog</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
